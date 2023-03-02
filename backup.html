@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://mxu34.github.io/PromptDT/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" Online Decision MetaMorphFormer">
+    <!--<meta name="author" content="***, ***">-->
+
+    <title> Online Decision MetaMorphFormer</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="./ODM/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="./ODM/offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2> Online Decision MetaMorphFormer</h2>
+    <h3>Submitted to ICLR 2023</h3>
+    <hr>
+    <p class="authors">
+		<!--
+        <a href="https://mxu34.github.io/">Mengdi Xu</a>,
+        Yikang Shen,
+        <a href="https://shunzh.github.io/">Shun Zhang</a>,
+        <a href="http://jackhaha363.github.io/">Yuchen Lu</a>,
+        <a href="https://www.meche.engineering.cmu.edu/directory/bios/zhao-ding.html">Ding Zhao</a>,
+        <a href="http://web.mit.edu/cocosci/josh.html">Joshua B. Tenenbaum</a> and
+        <a href="http://people.csail.mit.edu/ganchuang/">Chuang Gan</a>
+		-->
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://openreview.net/pdf?id=3e5nHhhRK93">Paper</a>
+        <a class="btn btn-primary" href="https://anonymous.4open.science/r/OnlineDecisionMetaMorphFormer-3F7F">Code</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!-- <div class="vcontainer">
+            <iframe class='video' src="" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div> -->
+        <!-- <hr> -->
+        <p>
+            The interactive artificial intelligence in the motion control field is an interesting topic, especially when universal knowledge adaptive to multiple task and universal environments is wanted. Although there are increasing efforts on Reinforcement learning (RL) studies with the assistance of transformers, it might subject to the limitation of the offline training pipeline, in which the exploration and generalization ability is prohibited. Motivated by the cognitive and behavioral psychology, such agent should have the ability to learn from others, recognize the world, and practice itself based its own experience. In this study, we propose the framework of Online Decision MetaMorphFormer (ODM) which attempts to achieve the above learning modes, with a unified model architecture to both highlight its own body perception and produce action and observation predictions. ODM can be applied on any arbitrary agent with a multi-joint body, located in different environments, trained with different type of tasks. Large-scale pretrained dataset are used to warmup ODM while the targeted environment continues to reinforce the universal policy. Substantial interactive experiments as well as few-shot and zero-shot tests in unseen environments and never-experienced tasks verify ODM's performance, and generalization ability. Our study shed some lights on research of general artificial intelligence on the embodied and cognitive field studies.
+
+        </p>
+
+    </div>
+
+    <br>
+
+    <div class="section">
+        <h2>Prompt-DT Architecture</h2>
+        <hr>
+        <div class="col justify-content-center text-center">
+            <div class="col-sm-12">
+                <img src="./ODM/PromptDT.png" style="width:100%">
+            </div>
+        </div>
+        <p>
+            Our Prompt-DT architecture is built on <a href="https://sites.google.com/berkeley.edu/decision-transformer"> Decision Transformer</a> [Chen et al., 2021] and solves the offline few-shot RL problem through the lens of a prompt-augmented sequence-modeling problem.  
+            The proposed trajectory prompt allows minimal architecture change to the Decision Transformer for generalization.
+            For each task at training and testing time, Prompt-DT takes as input both the trajectory prompt obtained from expert demonstrations and the most recent context history.
+            The data pair at each timestep is a 3-tuple (including state, action, and reward-to-go). 
+            Prompt-DT autoregressively outputs actions at heads corresponding to state tokens in the input sequence.
+        </p>
+    </div>
+
+    <br>
+
+    <div class="section">
+        <h2>Visualization of Motions in Online Experiments</h2>
+        <hr>
+        <p>
+            We evaluate Prompt-DT in five environments that are widely used in offline meta-RL literature, including Cheetah-dir, Cheetah-vel, Ant-dir, Dial, and Metaworld-reach-v2.
+            We compare Prompt-DT with Prompt-based Behavior Cloning (Prompt-MT-BC) to ablate the effect of reward-to-go tokens, Multi-task Offline RL (MT-ORL) to ablate the efficiency of our proposed trajectory prompts, Multi-task Behavior Cloning (MT-BC-Finetune), and <a href="https://proceedings.mlr.press/v139/mitchell21a.html">Meta-Actor Critic with Advantage Weighting (MACAW)</a> [Mitchell et al., 2021].
+            <!-- <br> -->
+            We find that Prompt-DT achieves high episodic accumulated rewards in never-before-seen tasks across environments by matching the task-specific information stored in a short trajectory prompt.        </p>
+        <!-- <div class="col justify-content-center text-center">
+            <div class="col-sm-12">
+                <img src="img/main_final.png" style="width:100%">
+            </div>
+            
+        </div> -->
+
+
+        <div class="row justify-content-center text-center">
+            <div class="col-sm-4">
+                <h5>Unimal-MetaMorph</h5>
+                <video controls width="270", height="180"> 
+					<source src="./ODM/floor-metamorph.mp4" type="video/mp4">
+				</video>
+            </div>
+            <div class="col-sm-4">
+                <h5>Unimal-MetaMorformer</h5>
+				<video controls width="270", height="180"> 
+					<source src="./ODM/floor-metamorformer" type="video/mp4">
+				</video>
+            </div>
+            <br>
+
+            <div class="col-sm-4">
+                <h5>Walker-PPO</h5>
+				<video controls width="270", height="180"> 
+					<source src="./ODM/walker_movie_ppo.mp4" type="video/mp4">
+				</video>
+            </div>
+            <div class="col-sm-4">
+                <h5>Walker-MetaMorphformer</h5>
+				<video controls width="270", height="180"> 
+					<source src="./ODM/walker_movie_metamorphformer.mp4" type="video/mp4">
+				</video>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+
+
+
+
+    <div class="section">
+        <h2>Few-Shot Policy Generalization to Out-of-distribution Tasks</h2>
+        <hr>
+        <div class="row justify-content-left">
+            
+            <div class="col-sm-7">
+                <br>
+                <p>
+                    We desire to test whether trajectory prompts enable the extrapolation ability when handling tasks with goals out of the training ranges. 
+                    We sample 8 training tasks in Ant-dir and 3 testing tasks, two of which have indexes smaller than the minimum task index and one larger than the maximum. 
+                    The task index is proportional to the desired direction angle. 
+                    <!-- <br> -->
+                    We find that Prompt-DT still performs better than baselines with no prompt augmentations.
+                </p>
+            </div>
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-5">
+                <img src="./ODM/Ant-dir-ood-1441-rebuttal.png" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+
+    <div class="section">
+        <h2>Sensitivity to Prompt Quantity and Quality</h2>
+        <hr>
+        <div class="row justify-content-left">
+                <p>
+                    In practice, there may exist a limited amount of high-quality demonstrations for each test task, or the demonstrations may contain trajectories with heterogeneous quality. 
+                    Our experiments show that, with trajectory prompt sampled from expert demonstrations and expert training dataset, Prompt-DT is not sensitive to the prompt quantity and can successfully extract task-specific information even with prompts containing only a few timesteps.
+                    We conduct an ablation study in Cheetah-vel for prompt quality.
+                    We find that Prompt-DT could adjust its generated actions according to the given trajectory prompt when training with expert data or medium data.
+                    However, when training with random data, only feeding Prompt-DT expert or medium trajectory prompts does not help improve the generalization ability.  
+                </p>
+            <div class="col-sm-5">
+                <br>
+                <img src="./ODM/prompt_quantity_table.png" style="width:100%">
+            </div>
+            <div class="col-sm-7">
+                <img src="./ODM/Ablation_Prompt_Quality_cheetah_vel.png" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+
+    <br>
+
+
+    <div class="section">
+        <h2>Bibtex</h2>
+        <hr>
+        <div class="bibtexsection">
+            @inproceedings{xu2022prompt,
+                title={Universal embodied intelligence: learning from crowd, recognizing the world, 
+                and reinforced with experience},
+                author={Ji, Luo and Ma, Longfei and Zhou, Chang and Wu, Fei and Yang Hongxia},
+                booktitle={Submitted to ICLR},
+                year={2023}
+            }
+        </div>
+    </div>
+
+    <hr>
+
+    <footer>
+        <p>Send feedback and questions to <a href="https://https://baimaxishi.github.io//">Anonymous</a>. 
+            This page is modified based on <a href="https://yilundu.github.io/gem/">here</a>.
+        </p>
+    </footer>
+
+
+
+
+    
+
+</div>
+
+
+<script src="./ODM/jquery-3.5.1.slim.min.js.下载" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="./ODM/popper.min.js.下载" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="./ODM/bootstrap.min.js.下载" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+</body></html>

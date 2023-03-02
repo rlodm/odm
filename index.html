@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)https://mxu34.github.io/PromptDT/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" Online Decision MetaMorphFormer">
+    <!--<meta name="author" content="***, ***">-->
+
+    <title> Online Decision MetaMorphFormer</title>
+    <!-- Bootstrap core CSS -->
+    <!--link href="bootstrap.min.css" rel="stylesheet"-->
+    <link rel="stylesheet" href="./ODM/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="./ODM/offcanvas.css" rel="stylesheet">
+    <!--    <link rel="icon" href="img/favicon.gif" type="image/gif">-->
+</head>
+
+<body>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container"></div>
+    <h2> Online Decision MetaMorphFormer</h2>
+    <h3>Submitted to ICLR 2023</h3>
+    <hr>
+    <p class="authors">
+		<!--
+        <a href="https://mxu34.github.io/">Mengdi Xu</a>,
+        Yikang Shen,
+        <a href="https://shunzh.github.io/">Shun Zhang</a>,
+        <a href="http://jackhaha363.github.io/">Yuchen Lu</a>,
+        <a href="https://www.meche.engineering.cmu.edu/directory/bios/zhao-ding.html">Ding Zhao</a>,
+        <a href="http://web.mit.edu/cocosci/josh.html">Joshua B. Tenenbaum</a> and
+        <a href="http://people.csail.mit.edu/ganchuang/">Chuang Gan</a>
+		-->
+    </p>
+    <div class="btn-group" role="group" aria-label="Top menu">
+        <a class="btn btn-primary" href="https://openreview.net/pdf?id=3e5nHhhRK93">Paper</a>
+        <a class="btn btn-primary" href="https://anonymous.4open.science/r/OnlineDecisionMetaMorphFormer-3F7F">Code</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="section">
+        <!-- <div class="vcontainer">
+            <iframe class='video' src="" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div> -->
+        <!-- <hr> -->
+        <p>
+            The interactive artificial intelligence in the motion control field is an interesting topic, especially when universal knowledge adaptive to multiple task and universal environments is wanted. Although there are increasing efforts on Reinforcement learning (RL) studies with the assistance of transformers, it might subject to the limitation of the offline training pipeline, in which the exploration and generalization ability is prohibited. Motivated by the cognitive and behavioral psychology, such agent should have the ability to learn from others, recognize the world, and practice itself based its own experience. In this study, we propose the framework of Online Decision MetaMorphFormer (ODM) which attempts to achieve the above learning modes, with a unified model architecture to both highlight its own body perception and produce action and observation predictions. ODM can be applied on any arbitrary agent with a multi-joint body, located in different environments, trained with different type of tasks. Large-scale pretrained dataset are used to warmup ODM while the targeted environment continues to reinforce the universal policy. Substantial interactive experiments as well as few-shot and zero-shot tests in unseen environments and never-experienced tasks verify ODM's performance, and generalization ability. Our study shed some lights on research of general artificial intelligence on the embodied and cognitive field studies.
+
+        </p>
+
+    </div>
+
+    <br>
+
+
+    <div class="section">
+        <h2>Visualization of Motions in Online Experiments</h2>
+        <hr>
+        <p>
+            General knowledge learning not only aims to improve the mathematical metrics, but also the motion reasonability from human's viewpoint. It is difficult for traditional RL to work on this issue which only solve the mathematical optimization problem. By jointly learning other agent's imitation and bridge with the agent's self-experiences, we assume ODM could obtain more universal intelligence about body control by solving many different types of problems. Here we provide some quick visualizations about generated motions of ODM, comparing with the original versions.       
+
+            By examining the agent motion's rationality and smoothness, we visualize motions of trained models on the walker environment. Since the walker agent has a human-like body (the 'ragdoll') such that reader could easily evaluate the motion reasonability based on real life experiences. In this experiment, we force the agent starts from exact the same state and remove the process noise. By comparing ODM (the bottom line) with PPO (the upper line), one can see the ODM behaves more like human while PPO keep swaying forwards and backwards and side to side, with unnatural movements such as lowering shoulders and twisting waist.
+        </p>
+        <!-- <div class="col justify-content-center text-center">
+            <div class="col-sm-12">
+                <img src="img/main_final.png" style="width:100%">
+            </div>
+            
+        </div> -->
+
+
+        <div class="row justify-content-center text-center">
+            <div class="col-sm-4">
+                <h5>Unimal-MetaMorph</h5>
+                <video controls width="270", height="180"> 
+					<source src="./ODM/floor-metamorph.mp4" type="video/mp4">
+				</video>
+            </div>
+            <div class="col-sm-4">
+                <h5>Unimal-MetaMorphformer</h5>
+				<video controls width="270", height="180"> 
+					<source src="./ODM/floor-metamorformer" type="video/mp4">
+				</video>
+            </div>
+            <br>
+        </div>
+
+        <div class="row justify-content-center text-center">
+            <div class="col-sm-4">
+                <h5>Walker-PPO</h5>
+                <video controls width="270", height="180"> 
+                    <source src="./ODM/walker_movie_ppo.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="col-sm-4">
+                <h5>Walker-MetaMorphformer</h5>
+                <video controls width="270", height="180"> 
+                    <source src="./ODM/walker_movie_metamorphformer.mp4" type="video/mp4">
+                </video>
+            </div>
+            <br>
+        </div>
+
+        <div class="row justify-content-center text-center">
+            Upper: typical motion video in Unimal, MetaMorph VS MetaMorphformer;
+            <br>
+            Lower: typical motion video in Walker, PPO VS MetaMorphformer
+            <br>
+        </div>
+    </div>
+
+    <br>
+
+
+    <div class="section">
+        <h2>Pipeline</h2>
+        <hr>
+        <div class="row justify-content-left">
+            
+            <div class="col-sm-7">
+                <br>
+                <p>
+                    We attempt to capture the above considerations by a framework called Online Decision Metamorphformer (ODM). ODM aims to study the general knowledge of embodied control across different body shapes, environments and tasks, as indicated in the figure. The model architecture contains the universal backbone and the task-specific modules. The morphology-aware auto-encoder is employed to encode states and actions and map to the same latent space. A casual transformer is then applied on this sequence problem to learn the general control knowledge, but with a morphological prompt to capture each body shape's characteristic. We first pretrain this model with a curriculum learning, by learning the demonstration from the easiest to the hardest task, from the expert to low-level players. The world model prediction is added as an auxiliary loss. The same architecture can then be applied in the online finetuning with the very last action trained with on-policy reinforce, and another value prediction head is added and learned by bootstrap method. During the test, we are able to test ODM with all training environments, transfer the policy to different body shapes, adaptive to unseen environments and accommodate with new types of tasks (e.g. from locomotion to reaching, target capturing or escaping from obstacles.).
+                </p>
+            </div>
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-5">
+                <img src="./ODM/application_pipeline.png" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+
+
+    <div class="section">
+        <h2>Model Architecture</h2>
+        <hr>
+        <div class="row justify-content-left">
+            
+            <div class="col-sm-7">
+                <br>
+                <p>
+                    Our ODM model structure contains a unified backbone and task-specific modules. Since our model deals with state and action variables in continuous spaces, the task-specific modules manage to map these original variables into a uniform-dimensional latent variable space, as the embedding; and map the predicted latent variable back to their original space, i.e., the projectors. The backbone has a two-directional, morphology-time transformer structure, including auto-encoders which encodes the pose embedding information, and a casual transformer which deal with the time-dependent decision making process. Architecture details are specified in the figure.
+                </p>
+            </div>
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-5">
+                <img src="./ODM/model_structure.png" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+
+    <div class="section">
+        <h2>Pretraining</h2>
+        <hr>
+        <div class="row justify-content-left">
+            
+            <div class="col-sm-7">
+                <br>
+                <p>
+                    Model is trained with datasets of hopper, halfcheetah, walker2d, ant, walker and unimal, from the easiest to the most complex. From the pretraining plot, one can observe that the training loss successfully converges within each curriculum course; although its absolute value occasionally jumps to different levels because of the environment (and the teacher) switching. Validation set accuracy (Green: validation mse of walker; Blue: validation mse of unimal) is also improved with walker and unimal as exhibition examples in the figure.
+                </p>
+            </div>
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-5">
+                <img src="./ODM/pretraining_loss.png" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+
+    <div class="section">
+        <h2>Online Experiment</h2>
+        <hr>
+        <div class="row justify-content-left">
+            
+            <div class="col-sm-7">
+                <br>
+                <p>
+                    To make the online learning faster, we use 32 independent agents to sample the trajectory in parallel, with 1000 as the maximum episode steps. Experiment continues more than 1500 iterations after the performance converges.  Figure provides a quick snapshot of online performances. Comparing with ODM without pretraining, returns of ODM are higher at the very beginning, indicating knowledge from pretraining is helpful. As online learning continuous, the performance degrades slightly until finally grows up again, indicating the training criteria of offline supervising and the online RL still have some contradictions.
+                </p>
+            </div>
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-5">
+                <img src="./ODM/unimal-walker.png" style="width:100%">
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+
+    <hr>
+
+    <footer>
+        <p>Send feedback and questions to <a href="https://anonymous.4open.science/status/OnlineDecisionMetaMorphFormer-3F7F">Anonymous</a>. 
+        </p>
+    </footer>
+
+
+
+
+    
+
+</div>
+
+
+<script src="./ODM/jquery-3.5.1.slim.min.js.下载" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="./ODM/popper.min.js.下载" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="./ODM/bootstrap.min.js.下载" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+
+</body></html>
